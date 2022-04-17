@@ -5,6 +5,7 @@
 int read_proc_file(char *filename, char *info, char *output);
 void read_stat(char *buf);
 int show_process_info(char *filename);
+void MemTotal(char *filename);
 
 int main(int argc, char *argv[])
 {
@@ -32,13 +33,15 @@ int show_process_info(char *filename)
 	    printf("Process status:\n");
         read_proc_file(filename, "stat", output);
         read_stat(output);
+        
+        MemTotal("/proc/meminfo"); 
 }
 
 
-int read_proc_file(char *pid, char *info, char *output) {
+int read_proc_file(char *filename, char *info, char *output) {
 	char buf[256];
     char proc_file[256];
-    sprintf(proc_file, "/proc/%s/%s", pid, info);
+    sprintf(proc_file, "/proc/%s/%s", filename, info);
     printf("Leyendo %s\n", proc_file);
     int fd = open(proc_file, O_RDONLY);
     if (fd == -1) { 
@@ -64,4 +67,17 @@ void read_stat(char *buf) {
         &pid, cmdline, &dummy, &dummy, &dummy, &dummy, &dummy, &dummy, &dummy, &dummy,
         &dummy, &dummy, &dummy, &dummy, &dummy, &dummy, &dummy, &priority, &nice);
     printf("%d\t%s\n", pid, cmdline);
+}
+
+void MemTotal(char *filename){
+    FILE *punteroArchivo = fopen(filename, "r");
+    char proc[255];
+    if (punteroArchivo == NULL){
+        printf("Unable to read directory\n");
+    }
+    else{
+        fgets(proc,255,punteroArchivo);  
+        printf("%s\n",proc);
+        fclose(punteroArchivo);
+    }
 }
