@@ -48,7 +48,8 @@ int read_proc_file(char *filename, char *info, char *output)
     sprintf(proc_file, "/proc/%s/%s", filename, info);
     printf("Leyendo %s\n", proc_file);
     int fd = open(proc_file, O_RDONLY);
-    if (fd == -1) { 
+    if (fd == -1) 
+    { 
         // print which type of error have in a code 
         printf("Unable to read directory\n");
 		return 1;
