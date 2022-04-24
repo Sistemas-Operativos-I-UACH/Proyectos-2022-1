@@ -6,6 +6,7 @@ int read_proc_file(char *filename, char *info, char *output);
 void read_stat(char *buf);
 int show_process_info(char *filename);
 void MemTotal(char *filename);
+void proc_kernel(char *filename);
 
 int main(int argc, char *argv[])
 {
@@ -22,6 +23,7 @@ int main(int argc, char *argv[])
         show_process_info(entry->d_name);
     }
 }
+
 int show_process_info(char *filename)
 {
     char output[256];
@@ -46,7 +48,7 @@ int read_proc_file(char *filename, char *info, char *output) {
     int fd = open(proc_file, O_RDONLY);
     if (fd == -1) { 
         // print which type of error have in a code 
-        printf("Error opening file\n");
+        printf("Unable to read directory\n");
 		return 1;
     }
 
@@ -60,13 +62,14 @@ int read_proc_file(char *filename, char *info, char *output) {
 
 
 void read_stat(char *buf) {
-    long int pid, nice, priority;
+    long int pid, nice, priority, vsize;
     char cmdline[1024];
     char dummy[255];
-    sscanf(buf, "%d %s %c %d %d %d %d %d %u %lu %lu %lu %lu %lu %lu %ld %ld %ld %ld",
+    sscanf(buf, "%d %s %c %d %d %d %d %d %u %lu %lu %lu %lu %lu %lu %ld %ld %ld %ld %lu %lu %lu %ld",
         &pid, cmdline, &dummy, &dummy, &dummy, &dummy, &dummy, &dummy, &dummy, &dummy,
-        &dummy, &dummy, &dummy, &dummy, &dummy, &dummy, &dummy, &priority, &nice);
-    printf("%d\t%s\n", pid, cmdline);
+        &dummy, &dummy, &dummy, &dummy, &dummy, &dummy, &dummy, &priority, &nice, &dummy, &dummy, &dummy, &vsize);
+    printf("%d\t%s\t%d\t%d\t%ld\n", pid, cmdline, priority, nice, vsize);
+
 }
 
 void MemTotal(char *filename){
@@ -80,4 +83,20 @@ void MemTotal(char *filename){
         printf("%s\n",proc);
         fclose(punteroArchivo);
     }
+}
+
+void proc_kernel(char *filename){
+	FILE *fd=fopen(filename,"r");
+	char n;
+	
+	if(fd==NULL){
+		printf("Unable to read directory\n");
+	}else{
+		if((n=fgetc(fd))==EOF){
+			printf("Proceso de Kernel\n");
+		}else{
+			printf("Proceso de Usuario\n");
+		}
+	}
+	fclose(fd);
 }
