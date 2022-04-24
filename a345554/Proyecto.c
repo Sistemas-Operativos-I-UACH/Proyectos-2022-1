@@ -2,6 +2,7 @@
 #include<unistd.h>
 #include<fcntl.h>
 #include<dirent.h>
+
 int read_proc_file(char *filename, char *info, char *output);
 void read_stat(char *buf);
 int show_process_info(char *filename);
@@ -40,7 +41,8 @@ int show_process_info(char *filename)
 }
 
 
-int read_proc_file(char *filename, char *info, char *output) {
+int read_proc_file(char *filename, char *info, char *output) 
+{
 	char buf[256];
     char proc_file[256];
     sprintf(proc_file, "/proc/%s/%s", filename, info);
@@ -52,7 +54,8 @@ int read_proc_file(char *filename, char *info, char *output) {
 		return 1;
     }
 
-	while (read(fd, &buf, 256)) {
+	while (read(fd, &buf, 256)) 
+    {
 		sprintf(output, "%s", buf);
 	}
 
@@ -61,7 +64,8 @@ int read_proc_file(char *filename, char *info, char *output) {
 }
 
 
-void read_stat(char *buf) {
+void read_stat(char *buf) 
+{
     long int pid, nice, priority, vsize;
     char cmdline[1024];
     char dummy[255];
@@ -72,29 +76,39 @@ void read_stat(char *buf) {
 
 }
 
-void MemTotal(char *filename){
+void MemTotal(char *filename)
+{
     FILE *punteroArchivo = fopen(filename, "r");
     char proc[255];
-    if (punteroArchivo == NULL){
+    if (punteroArchivo == NULL)
+    {
         printf("Unable to read directory\n");
     }
-    else{
+    else
+    {
         fgets(proc,255,punteroArchivo);  
         printf("%s\n",proc);
         fclose(punteroArchivo);
     }
 }
 
-void proc_kernel(char *filename){
+void proc_kernel(char *filename)
+{
 	FILE *fd=fopen(filename,"r");
 	char n;
 	
-	if(fd==NULL){
+	if(fd==NULL)
+    {
 		printf("Unable to read directory\n");
-	}else{
-		if((n=fgetc(fd))==EOF){
+	}
+    else
+    {
+		if((n=fgetc(fd))==EOF)
+        {
 			printf("Proceso de Kernel\n");
-		}else{
+		}
+        else
+        {
 			printf("Proceso de Usuario\n");
 		}
 	}
