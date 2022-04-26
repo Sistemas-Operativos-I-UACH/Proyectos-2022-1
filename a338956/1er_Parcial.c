@@ -34,7 +34,6 @@ void Bucle(char *comando){
 	}
 }
 
-
 int main(){
     DIR *folder;
     struct dirent *entry;
