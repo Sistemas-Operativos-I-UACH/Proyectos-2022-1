@@ -2,6 +2,7 @@
 #include<unistd.h>
 #include<fcntl.h>
 #include<dirent.h>
+#include<string.h>
 
 int read_proc_file(char *filename, char *info, char *output);
 void read_stat(char *buf);
