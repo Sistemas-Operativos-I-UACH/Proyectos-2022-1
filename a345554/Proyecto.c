@@ -78,7 +78,7 @@ void read_stat(char *buf)
     sscanf(buf, "%d %s %c %d %d %d %d %d %u %lu %lu %lu %lu %lu %lu %ld %ld %ld %ld %lu %lu %lu %ld",
         &pid, cmdline, &dummy, &dummy, &dummy, &dummy, &dummy, &dummy, &dummy, &dummy,
         &dummy, &dummy, &dummy, &dummy, &dummy, &dummy, &dummy, &priority, &nice, &dummy, &dummy, &dummy, &vsize);
-    printf("PID \t");
+    printf("PID \t Name \t Priority \t Nice \t Size");
     printf("\n%d\t%s\t%d\t%d\t%ld\n", pid, cmdline, priority, nice, vsize);
 
 }
