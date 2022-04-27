@@ -42,7 +42,7 @@ int show_process_info(char *filename)
 	    printf("Process status:\n");
         read_proc_file(filename, "stat", output);
         read_stat(output);
-        
+        proc_kernel(filename);
         MemTotal("/proc/meminfo"); 
 }
 
@@ -79,7 +79,7 @@ void read_stat(char *buf)
     sscanf(buf, "%d %s %c %d %d %d %d %d %u %lu %lu %lu %lu %lu %lu %ld %ld %ld %ld %lu %lu %lu %ld",
         &pid, cmdline, &dummy, &dummy, &dummy, &dummy, &dummy, &dummy, &dummy, &dummy,
         &dummy, &dummy, &dummy, &dummy, &dummy, &dummy, &dummy, &priority, &nice, &dummy, &dummy, &dummy, &vsize);
-    printf("%d\t%s\t%d\t%d\t%ld\n", pid, cmdline, priority, nice, vsize);
+    printf("%d\t%s\t%d\t%d\t%ldKb\n", pid, cmdline, priority, nice, vsize);
 
 }
 
