@@ -42,7 +42,7 @@ int show_process_info(char *filename)
 	    printf("Process status:\n");
         read_proc_file(filename, "stat", output);
         read_stat(output);
-        proc_kernel(filename);
+        
         MemTotal("/proc/meminfo"); 
 }
 
