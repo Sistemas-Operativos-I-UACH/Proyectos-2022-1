@@ -8,6 +8,7 @@ void read_stat(char *buf);
 int show_process_info(char *filename);
 void MemTotal(char *filename);
 void proc_kernel(char *filename);
+int is_numeric(char *str);
 
 int main(int argc, char *argv[])
 {
@@ -21,7 +22,11 @@ int main(int argc, char *argv[])
     }
     while(entry = readdir(folder) )
     {
-        show_process_info(entry->d_name);
+        if(! is_numeric(entry->d_name) ) {
+			printf("DIRECTORIO: %s no es numérico\n", entry->d_name);
+			continue;
+		}
+		show_process_info(entry->d_name);
     }
 }
 
@@ -114,4 +119,13 @@ void proc_kernel(char *filename)
 		}
 	}
 	fclose(fd);
+}
+
+int is_numeric(char *str) {
+    for(int i = strlen(str) - 1; i >= 0;  i--) {
+		if(str[i] > 47 && str[i] < 58)
+            continue;
+		return 0;
+    }
+    return 1;
 }
