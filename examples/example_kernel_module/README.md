@@ -6,7 +6,7 @@ This is a test kernel module
 
 
 1. [Iván Chavero](https://github.com/imcsk8) *Master Jedi*
-2. [Andres Silva Ortega](https:github.com/Mopetaso) *R2D2*
+2. [Andres Silva Ortega](https://github.com/Mopetaso) *R2D2*
 3. 
 4. 
 5. 
