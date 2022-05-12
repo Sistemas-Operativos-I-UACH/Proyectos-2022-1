@@ -7,7 +7,7 @@ This is a test kernel module
 
 1. [Iván Chavero](https://github.com/imcsk8) *Master Jedi*
 2. [Andres Silva Ortega](https://github.com/Sistemas-Operativos-I-UACH/Proyectos-2022-1/tree/main/a345554) *High Ground*
-3. [Jorge Aguilar](https://github.com/JorgeAg12) *Chewbacca*
+3. [Jorge Aguilar](https://github.com/Sistemas-Operativos-I-UACH/Proyectos-2022-1/tree/main/a339002) *Chewbacca*
 4. 
 5. 
 6. 
