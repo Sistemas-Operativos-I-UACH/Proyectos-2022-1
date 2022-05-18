@@ -1,0 +1,1 @@
+cmd_/home/mopet/Documentos/ProyectGithub/Proyectos-2022-1/a345554/Module.symvers := sed 's/\.ko$$/\.o/' /home/mopet/Documentos/ProyectGithub/Proyectos-2022-1/a345554/modules.order | scripts/mod/modpost    -o /home/mopet/Documentos/ProyectGithub/Proyectos-2022-1/a345554/Module.symvers -e -i Module.symvers   -T -
