@@ -1,4 +1,4 @@
-obj-m += example_module.c
+obj-m += example_module.o
 
 all:
 	echo "Compilando modulo de ejemplo"
