@@ -8,6 +8,8 @@ MODULE_AUTHOR("Andres Silva Ortega");
 MODULE_DESCRIPTION("Example Linux Kernel Module.");
 MODULE_VERSION("0.01");
 
+
+
 static int __init example_init(void) {
  printk(KERN_INFO "MODULO INICALIZADO\n");
  return 0;
