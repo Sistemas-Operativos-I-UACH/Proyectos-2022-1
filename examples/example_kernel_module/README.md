@@ -156,3 +156,4 @@ Once you get the changes you must pull them to integrate them in the branch
 * https://education.github.com/git-cheat-sheet-education.pdf
 * https://code.visualstudio.com/docs/editor/versioncontrol
 * https://www.thegeekstuff.com/2013/07/write-linux-kernel-module/
+* https://blog.sourcerer.io/writing-a-simple-linux-kernel-module-d9dc3762c234
