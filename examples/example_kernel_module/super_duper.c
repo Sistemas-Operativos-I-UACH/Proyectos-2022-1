@@ -28,7 +28,7 @@ static int __init super_duper_init(void) {
     major = register_chrdev(0, DEVICE_NAME, &fops);
 
     if (major < 0) {
-        printk(KERN_ALERT "Super Pepito load failed\n");
+        printk(KERN_ALERT "Super Duper load failed\n");
         return major;
     }
 
