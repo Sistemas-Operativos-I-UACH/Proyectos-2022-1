@@ -1,7 +1,7 @@
-obj-m += example_module.o
+obj-m += super_duper.o
 
 all:
-	echo "Compilando modulo super duper de ejemplo"
+	echo "Compilando modulo super duper"
 	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules
 
 clean:
