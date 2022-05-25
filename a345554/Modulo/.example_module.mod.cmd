@@ -1,0 +1,1 @@
+cmd_/home/mopet/Documentos/ProyectGithub/Proyectos-2022-1/a345554/Modulo/example_module.mod := { echo  /home/mopet/Documentos/ProyectGithub/Proyectos-2022-1/a345554/Modulo/example_module.o;  echo; } > /home/mopet/Documentos/ProyectGithub/Proyectos-2022-1/a345554/Modulo/example_module.mod
