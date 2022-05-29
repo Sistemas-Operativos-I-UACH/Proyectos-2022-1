@@ -71,8 +71,6 @@ static ssize_t dev_read(struct file *filep, char *buffer, size_t len, loff_t *of
     return 0;
 }
 
-
-
 static void __exit example_exit(void) {
  printk(KERN_INFO "MODULO FINALIZADO\n");
 }
