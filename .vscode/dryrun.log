@@ -1,3 +1,4 @@
+make --dry-run --always-make --keep-going --print-directory
 make: Entering directory '/home/mopet/Documentos/ProyectGithub/Proyectos-2022-1'
 make: Leaving directory '/home/mopet/Documentos/ProyectGithub/Proyectos-2022-1'
  
