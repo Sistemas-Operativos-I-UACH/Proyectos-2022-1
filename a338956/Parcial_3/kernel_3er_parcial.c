@@ -1,0 +1,78 @@
+#include <linux/init.h>
+#include <linux/module.h>
+#include <linux/kernel.h>
+#include <linux/fs.h>
+
+MODULE_LICENSE("GPL");
+MODULE_AUTHOR("a338956");
+MODULE_DESCRIPTION("EXAMEN FINAL SO ");
+MODULE_VERSION("0.01");
+
+#define DEVICE_NAME "Kernel_3er_parcial"
+
+static int major;
+
+static int dev_open(struct inode*, struct file*);
+static int dev_release(struct inode*, struct file*);
+static ssize_t dev_read(struct file*, char*, size_t, loff_t*);
+static ssize_t dev_write(struct file*, const char*, size_t, loff_t*);
+
+static struct file_operations fops = {
+   .open = dev_open,
+   .read = dev_read,
+   .write = dev_write,
+   .release = dev_release,
+};
+
+static int __init super_duper_Inicial(void) {
+    major = register_chrdev(0, DEVICE_NAME, &fops);
+
+    if (major < 0) {
+        printk(KERN_ALERT "Super Duper Fallido\n");
+        return major;
+    }
+
+    printk(KERN_INFO "Inicializando Módulo 3er Parcial!!!\n");
+    printk(KERN_INFO "Asignado al major %d. para hablar con\n", major);
+    printk(KERN_INFO "el driver, creado el archivo de dispositivo\n");
+    printk(KERN_INFO "'copy/paste --> sudo mknod /dev/%s c %d 0\n", DEVICE_NAME, major);
+    printk(KERN_INFO "Try various minor numbers. Try to cat and echo to\n");
+    printk(KERN_INFO "the device file.\n");
+    printk(KERN_INFO "Remove the device file and module when done.\n");
+
+    return 0;
+}
+
+static int dev_open(struct inode *inodep, struct file *filep) {
+   printk(KERN_INFO " --> Abierto\n");
+   return 0;
+}
+
+static ssize_t dev_write(struct file *filep, const char *buffer, size_t len, loff_t *offset) {
+
+   printk(KERN_INFO "Sorry, Super Duper --> Es de Solo Lectura\n");
+   return -EFAULT;
+}
+
+static int dev_release(struct inode *inodep, struct file *filep) {
+   printk(KERN_INFO " --> Finalizado\n");
+   return 0;
+}
+
+static ssize_t dev_read(struct file *filep, char *buffer, size_t len, loff_t *offset) {
+    int errors = 0;
+    char *message = "I want to break free, I want to break free...";
+    int message_len = strlen(message);
+
+    errors = copy_to_user(buffer, message, message_len);
+
+    return errors == 0 ? message_len : -EFAULT;
+    return 0;
+}
+
+static void __exit super_duper_Final(void) {
+    printk(KERN_INFO ".:Retirando Modulo:.\n");
+}
+
+module_init(super_duper_Inicial);
+module_exit(super_duper_Final);
