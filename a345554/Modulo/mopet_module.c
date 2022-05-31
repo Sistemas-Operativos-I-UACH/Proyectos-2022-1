@@ -8,7 +8,7 @@ MODULE_AUTHOR("Andres Silva Ortega");
 MODULE_DESCRIPTION("Example Linux Kernel Module.");
 MODULE_VERSION("0.01");
 
-#define DEVICE_NAME "mopet_module"
+#define DEVICE_NAME "example_mopet_module"
 
 static int major;
 
